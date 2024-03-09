@@ -39,7 +39,12 @@
 			<artifactId>drag-free</artifactId>
 			<version>1.0.2</version>
 		</dependency>
-		<!-- 积木报表 mongo redis 支持包 
+		<dependency>
+			<groupId>com.alipay.sofa</groupId>
+			<artifactId>sofa-ark-springboot-starter</artifactId>
+			<version>${sofa.ark.version}</version>
+		</dependency>
+		<!-- 积木报表 mongo redis 支持包
 		<dependency>
 			<groupId>org.jeecgframework.jimureport</groupId>
 			<artifactId>jimureport-nosql-starter</artifactId>

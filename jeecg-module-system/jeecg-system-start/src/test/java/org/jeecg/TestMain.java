@@ -1,4 +1,4 @@
-//package org.jeecg;
+package org.jeecg;//package org.jeecg;
 //
 //import com.alibaba.fastjson.JSONObject;
 //import org.jeecg.common.util.RestUtil;

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jeecg-system-start</artifactId>
-    
+
     <dependencies>
         <!-- SYSTEM 系统管理模块 -->
         <dependency>
@@ -23,6 +23,33 @@
             <groupId>org.jeecgframework.boot</groupId>
             <artifactId>jeecg-module-demo</artifactId>
             <version>${jeecgboot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework</groupId>
+            <artifactId>jeewx-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.jimureport</groupId>
+            <artifactId>jimureport-spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jeecgframework.boot</groupId>
+            <artifactId>jeecg-system-local-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa.koupleless</groupId>
+            <artifactId>koupleless-base-starter</artifactId>
+            <version>${koupleless.runtime.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alipay.sofa</groupId>
+            <artifactId>web-ark-plugin</artifactId>
+            <version>${sofa.ark.version}</version>
         </dependency>
     </dependencies>
 

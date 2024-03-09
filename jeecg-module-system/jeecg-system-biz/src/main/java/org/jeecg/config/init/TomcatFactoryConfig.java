@@ -1,5 +1,6 @@
 package org.jeecg.config.init;
 
+import com.alipay.sofa.ark.springboot.web.ArkTomcatServletWebServerFactory;
 import org.apache.catalina.Context;
 import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -18,7 +19,7 @@ public class TomcatFactoryConfig {
      */
     @Bean
     public TomcatServletWebServerFactory tomcatFactory() {
-        TomcatServletWebServerFactory factory = new TomcatServletWebServerFactory() {
+        TomcatServletWebServerFactory factory = new ArkTomcatServletWebServerFactory() {
             @Override
             protected void postProcessContext(Context context) {
                 ((StandardJarScanner) context.getJarScanner()).setScanManifest(false);

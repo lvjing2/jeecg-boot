@@ -19,7 +19,7 @@
 		<developerConnection>http://guojusoft.com</developerConnection>
 		<url>http://www.jeecg.com/vip</url>
 	</scm>
-	
+
   	<parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
@@ -75,12 +75,16 @@
 		<logback.version>1.2.9</logback.version>
 		<!-- seata -->
 		<seata.version>1.5.2</seata.version>
+		<sofa.ark.version>2.2.8</sofa.ark.version>
+		<koupleless.runtime.version>1.0.0</koupleless.runtime.version>
+		<guava.version>32.1.2-jre</guava.version>
 	</properties>
 
 	<modules>
         <module>jeecg-boot-base-core</module>
         <module>jeecg-module-demo</module>
         <module>jeecg-module-system</module>
+		<module>arkmodules/jeecg-system-biz1</module>
     </modules>
 
 	<repositories>
@@ -119,6 +123,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -145,6 +150,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
 			<!-- spring-cloud-->
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -171,7 +181,7 @@
 			<!-- system 模块-->
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
-				<artifactId>jeecg-system-biz</artifactId>
+				<artifactId>jeecg-system-biz1</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 
@@ -185,6 +195,11 @@
 			<dependency>
 				<groupId>org.jeecgframework.boot</groupId>
 				<artifactId>jeecg-boot-base-core</artifactId>
+				<version>${jeecgboot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.boot</groupId>
+				<artifactId>jeecg-system-inner-api</artifactId>
 				<version>${jeecgboot.version}</version>
 			</dependency>
 			<!-- system 单体 api -->
@@ -456,7 +471,7 @@
 			<url>http://maven.jeecg.com:8090/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
     <!-- 环境 -->
     <profiles>
         <!-- 开发 -->

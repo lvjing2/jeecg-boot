@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>org.jeecgframework.boot</groupId>
+		<artifactId>jeecg-boot-parent</artifactId>
+		<version>3.6.1</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>jeecg-system-biz1</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>jeecg-system-local-api</artifactId>
+			<scope>provided</scope>
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>org.jeecgframework.boot</groupId>-->
+<!--					<artifactId>jeecg-boot-base-core</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+		</dependency>
+
+		<!-- 企业微信/钉钉 api -->
+		<dependency>
+			<groupId>org.jeecgframework</groupId>
+			<artifactId>jeewx-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-starter</artifactId>
+			<version>${shiro.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>${mybatis-plus.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- 积木报表 -->
+		<dependency>
+			<groupId>org.jeecgframework.jimureport</groupId>
+			<artifactId>jimureport-spring-boot-starter</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jeecgframework.boot</groupId>
+			<artifactId>drag-free</artifactId>
+			<version>1.0.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- 积木报表 mongo redis 支持包
+		<dependency>
+			<groupId>org.jeecgframework.jimureport</groupId>
+			<artifactId>jimureport-nosql-starter</artifactId>
+		</dependency>-->
+
+		<dependency>
+			<groupId>com.alipay.sofa.koupleless</groupId>
+			<artifactId>koupleless-app-starter</artifactId>
+			<version>${koupleless.runtime.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.alipay.sofa</groupId>
+				<artifactId>sofa-ark-maven-plugin</artifactId>
+				<version>${sofa.ark.version}</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<skipArkExecutable>true</skipArkExecutable>
+					<outputDirectory>./target</outputDirectory>
+					<bizName>biz1</bizName>
+					<webContextPath>biz1</webContextPath>
+					<declaredMode>true</declaredMode>
+					<packExcludesConfig>rules.txt</packExcludesConfig>
+					<!--					打包、安装和发布 ark biz-->
+					<!--					静态合并部署需要配置-->
+					<!--					<attach>true</attach>-->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

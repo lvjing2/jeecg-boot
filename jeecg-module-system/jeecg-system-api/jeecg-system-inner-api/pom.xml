@@ -9,13 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jeecg-system-local-api</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.jeecgframework.boot</groupId>
-            <artifactId>jeecg-system-inner-api</artifactId>
-        </dependency>
-    </dependencies>
+    <artifactId>jeecg-system-inner-api</artifactId>
 
 </project>

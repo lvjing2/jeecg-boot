@@ -26,7 +26,7 @@ spring:
       max-request-size: 10MB
   mail:
     host: smtp.163.com
-    username: jeecgos@163.com
+    username: ??
     password: ??
     properties:
       mail:
@@ -39,7 +39,7 @@ spring:
   quartz:
     job-store-type: jdbc
     initialize-schema: embedded
-    #定时任务启动开关，true-开  false-关
+    #定时任务开关，true-开  false-关
     auto-startup: true
     #延迟1秒启动定时任务
     startup-delay: 1s
@@ -111,14 +111,14 @@ spring:
         # 初始化大小，最小，最大
         initial-size: 5
         min-idle: 5
-        maxActive: 20
+        maxActive: 1000
         # 配置获取连接等待超时的时间
         maxWait: 60000
         # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
         timeBetweenEvictionRunsMillis: 60000
         # 配置一个连接在池中最小生存的时间，单位是毫秒
         minEvictableIdleTimeMillis: 300000
-        validationQuery: SELECT 1
+        validationQuery: SELECT 1 FROM DUAL
         testWhileIdle: true
         testOnBorrow: false
         testOnReturn: false
@@ -135,7 +135,7 @@ spring:
         master:
           url: jdbc:mysql://127.0.0.1:3306/jeecg-boot?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
           username: root
-          password: 123456
+          password: root
           driver-class-name: com.mysql.cj.jdbc.Driver
           # 多数据源配置
           #multi-datasource1:
@@ -172,37 +172,38 @@ jeecg:
   # 平台上线安全配置
   firewall:
     # 数据源安全 (开启后，Online报表和图表的数据源为必填)
-    dataSourceSafe: false
+    dataSourceSafe: true
     # 低代码模式（dev:开发模式，prod:发布模式——关闭所有在线开发配置能力）
-    lowCodeMode: dev
+    lowCodeMode: prod
   # 签名密钥串(前后端要一致，正式发布请自行修改)
   signatureSecret: dd05f1c54d63749eda95f9fa6d49v442a
   #签名拦截接口
   signUrls: /sys/dict/getDictItems/*,/sys/dict/loadDict/*,/sys/dict/loadDictOrderByValue/*,/sys/dict/loadDictItem/*,/sys/dict/loadTreeData,/sys/api/queryTableDictItemsByCode,/sys/api/queryFilterTableDictInfo,/sys/api/queryTableDictByKeys,/sys/api/translateDictFromTable,/sys/api/translateDictFromTableByKeys
-  # 本地：local、Minio：minio、阿里云：alioss
-  uploadType: local
+  # local\minio\alioss
+  uploadType: alioss
   # 前端访问地址
   domainUrl:
     pc: http://localhost:3100
     app: http://localhost:8051
   path:
     #文件上传根目录 设置
-    upload: /opt/upFiles
+    upload: /opt/jeecg-boot/upload
     #webapp文件路径
-    webapp: /opt/webapp
+    webapp: /opt/jeecg-boot/webapp
   shiro:
-    excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/jmreport/bigscreen2/**
+    excludeUrls: /test/jeecgDemo/demo3,/test/jeecgDemo/redisDemo/**,/jmreport/bigscreen2/**,/api/getUserInfo
   #阿里云oss存储和大鱼短信秘钥配置
   oss:
     accessKey: ??
     secretKey: ??
     endpoint: oss-cn-beijing.aliyuncs.com
     bucketName: jeecgdev
-  # ElasticSearch 6设置
+    staticDomain: https://static.jeecg.com
+  # ElasticSearch 设置
   elasticsearch:
     cluster-name: jeecg-ES
     cluster-nodes: 127.0.0.1:9200
-    check-enabled: false
+    check-enabled: true
   # 在线预览文件服务器地址配置
   file-view-domain: http://fileview.jeecg.com
   # minio文件上传
@@ -214,13 +215,13 @@ jeecg:
   #大屏报表参数设置
   jmreport:
     #多租户模式，默认值为空(created:按照创建人隔离、tenant:按照租户隔离) (v1.6.2+ 新增)
-    saasMode: 
+    saasMode: created
     # 平台上线安全配置(v1.6.2+ 新增)
     firewall:
       # 数据源安全 (开启后，不允许使用平台数据源、SQL解析加签并且不允许查询数据库)
-      dataSourceSafe: false
+      dataSourceSafe: true
       # 低代码开发模式（dev:开发模式，prod:发布模式—关闭在线报表设计功能，分配角色admin、lowdeveloper可以放开限制）
-      lowCodeMode: dev
+      lowCodeMode: prod
   #xxl-job配置
   xxljob:
     enabled: false
@@ -252,7 +253,7 @@ knife4j:
   #开启生产环境屏蔽
   production: false
   basic:
-    enable: false
+    enable: true
     username: jeecg
     password: jeecg1314
 #第三方登录
